@@ -1,15 +1,6 @@
 <template>
-  <div class="cailiao" >
-
-  </div>
+  <div class="cailiao"></div>
 </template>
-<script>
-  export default {
-    props: {
-      numheight: 100
-    }
-  }
-</script>
 <style>
   .cailiao{
     width:1000px;

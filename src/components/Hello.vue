@@ -1,6 +1,7 @@
 <template>
-  <div class="hello" id="Hello">
-   {{message}}
+  <div class="hello" id="Hello" style="width:1000px;min-height:300px;margin:0 auto;background:beige;margin-top:20px;">
+    你好我是书店
+    {{message}}
   </div>
 </template>
 

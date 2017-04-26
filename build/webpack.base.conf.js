@@ -4,6 +4,7 @@ var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 const CleanCSSPlugin = require('less-plugin-clean-css')
 var webpack = require('webpack')
+var less = require('less')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -80,6 +81,14 @@ module.exports = {
             loader: 'less-loader',
             options: { lessPlugins: [ new CleanCSSPlugin({ advanced: true }) ] }
           }
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'less-loader'
         ]
       }
     ]

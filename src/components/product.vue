@@ -1,6 +1,12 @@
 <template>
-  <div class="product-box">
-
+  <div class="product-box" style="padding:20px;">
+    <div  class="mr5">
+      <router-link :to="{ name: 'niantu'}">导航1</router-link>
+      <router-link :to="{ name: 'bookstore'}">导航2</router-link>
+    </div>
+    <transition mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 <script>
