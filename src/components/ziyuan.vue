@@ -1,10 +1,7 @@
 <template>
-  <div id="cailiao" >
-    <div class="header" transition="modal">
+  <div id="ziyuan">
+    <div class="header">
       <headerlastbox slot="header-last-box" v-show="true" class="header-content errorClass" ></headerlastbox>
-    </div>
-    <div>
-       <img src="../assets/images/cailiao.png" v-for="i in 3">
     </div>
   </div>
 </template>
@@ -12,8 +9,7 @@
   import headerlastbox from '@/components/header-last-box.vue'
   import $ from 'jquery'
   export default {
-    name: 'cailiao',
-    props: 'navflag',
+    name: 'ziyuan',
     data () {
       return {
         Height: 500,

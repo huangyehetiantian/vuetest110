@@ -10,7 +10,23 @@
   </div>
 </template>
 <script>
+  import headerlastbox from '@/components/header-last-box.vue'
+  import $ from 'jquery'
   export default {
+    name: 'cailiao',
+    props: 'navflag',
+    data () {
+      return {
+        Height: 500,
+        isActive: false,
+        activeClass: 'activeClass',
+        errorClass: 'errorClass'
+      }
+    },
+    components: {headerlastbox},
+    mounted () {
+      $('#header-box').show()
+    }
   }
 </script>
 <style>

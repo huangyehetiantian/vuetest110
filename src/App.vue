@@ -1,23 +1,26 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml">
   <div id="app"  >
-    <headerbox slot="header" v-show="true" class="header"   v-bind:class="[{ activeClass: isActive }, errorClass]"></headerbox>
-    <div class="content">
-      <div class="carousel-wrap" id="carousel">
-        <transition-group tag="ul" class='slide-ul' name="list" >
-          <li v-for="(list,index) in slideList" :key="index" v-show="index===currentIndex" @mouseenter="stop" @mouseleave="go">
-            <a :href="list.clickUrl" >
-              <!--<img src="list.image" :alt="list.desc">-->
-              <img :src='list.image'>
-            </a>
-          </li>
-        </transition-group>
-        <div class="carousel-items">
-          <span v-for="(item,index) in slideList.length" :class="{'active':index===currentIndex}" @mouseover="change(index)"></span>
+    <div  >
+      <headerbox slot="header-box" v-show="true" class="header-content errorClass"  v-if="navflag" id="header-box"></headerbox>
+      <headerlastbox slot="header-last-box" v-show="true" class="header-content errorClass"  v-else ></headerlastbox>
+      <div class="content">
+        <div class="carousel-wrap" id="carousel">
+          <transition-group tag="ul" class='slide-ul' name="list" >
+            <li v-for="(list,index) in slideList" :key="index" v-show="index===currentIndex" @mouseenter="stop" @mouseleave="go">
+              <a :href="list.clickUrl" >
+                <!--<img src="list.image" :alt="list.desc">-->
+                <img :src='list.image'>
+              </a>
+            </li>
+          </transition-group>
+          <div class="carousel-items">
+            <span v-for="(item,index) in slideList.length" :class="{'active':index===currentIndex}" @mouseover="change(index)"></span>
+          </div>
         </div>
+        <router-view></router-view>
       </div>
-      <router-view></router-view>
+      <footerbox></footerbox>
     </div>
-    <footerbox></footerbox>
   </div>
 </template>
 <script>
@@ -25,6 +28,7 @@
   import Contents from '@/components/Content.vue'
   import footerbox from '@/components/footer/Footer.vue'
   import headerbox from '@/components/headerbox.vue'
+  import headerlastbox from '@/components/header-last-box.vue'
   import $ from 'jquery'
   export default {
     data () {
@@ -47,6 +51,7 @@
           }
         ],
         currentIndex: 0,
+        navflag: true,
         timer: '',
         msg: '',
         on: false,
@@ -61,7 +66,7 @@
         errorClass: 'errorClass'
       }
     },
-    components: {Hello, Contents, footerbox, headerbox},
+    components: {Hello, Contents, footerbox, headerbox, headerlastbox},
     methods: {
       computeHeight: function () {
         if (this.Height > 1800) {
@@ -83,8 +88,9 @@
         })
       },
       go () {
-        this.timer = setInterval(function () {
-          this.autoPlay()
+        var _this = this
+        _this.timer = setInterval(function () {
+          _this.autoPlay()
         }, 4000)
       },
       stop () {
@@ -99,13 +105,22 @@
         if (this.currentIndex > this.slideList.length - 1) {
           this.currentIndex = 0
         }
+      },
+      showmsg (data) {
+        alert(data)
+        alert(333)
       }
+    },
+    mounted () {
+      $('#header-box').show()
     }
   }
 </script>
 <style>
   @import "assets/less/public.less";
   @import "assets/less/header/header.less";
+  .header-last-box{background:rgba(254,254,254,0.9);}
+  .header-last-box a{color:#3388FF!important;}
   .activeClass{
     position:fixed;
     left:0;
