@@ -22,10 +22,5 @@
   }
 </style>
 <script>
-  import $ from 'jquery'
-  export default{
-    created () {
-      $('#app').html('')
-    }
-  }
+  export default{}
 </script>

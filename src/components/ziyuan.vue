@@ -3,6 +3,7 @@
     <div class="header">
       <headerlastbox slot="header-last-box" v-show="true" class="header-content errorClass" ></headerlastbox>
     </div>
+    <img src="../assets/images/ziyuan.png">
   </div>
 </template>
 <script>

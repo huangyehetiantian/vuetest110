@@ -7,6 +7,7 @@
 </template>
 <script>
   import headerlastbox from '@/components/header-last-box.vue'
+  import $ from 'jquery'
   export default {
     name: 'login',
     data () {
@@ -17,7 +18,10 @@
         errorClass: 'errorClass'
       }
     },
-    components: {headerlastbox}
+    components: {headerlastbox},
+    mounted () {
+      $('#header-box').hide()
+    }
   }
 </script>
 <style>
