@@ -12,6 +12,7 @@ import ziyuan from '../components/ziyuan.vue'
 import shoucang from '../components/shoucang.vue'
 import zhuce from '../components/zhuce.vue'
 import login from '../components/login.vue'
+import loginbox from '../components/loginbox.vue'
 Vue.use(Router)
 const routes = [
   {
@@ -60,7 +61,24 @@ const routes = [
   {
     path: '/ziyuan',
     name: 'ziyuan',
-    component: ziyuan
+    component: ziyuan,
+    children: [
+      {
+        path: '/ziyuan/niantu',
+        name: 'niantu',
+        component: niantu
+      }
+    ]
+  },
+  {
+    path: 'login',
+    name: 'login',
+    component: login
+  },
+  {
+    path: '/loginbox',
+    name: 'loginbox',
+    component: loginbox
   },
   {
     path: '/shoucang',
@@ -71,11 +89,6 @@ const routes = [
     path: '/zhuce',
     name: 'zhuce',
     component: zhuce
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: login
   }
 ]
 export default new Router({

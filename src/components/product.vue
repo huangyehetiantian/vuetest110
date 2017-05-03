@@ -26,6 +26,7 @@
     components: {headerlastbox},
     mounted () {
       $('#header-box').show()
+      $('#header-last-box').hide()
     }
   }
 </script>
